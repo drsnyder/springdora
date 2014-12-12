@@ -6,6 +6,7 @@ import junit.framework.TestCase;
 
 import java.io.StringReader;
 
+
 public class MercuryResponseTest extends TestCase {
 
     public void testResponseDecoding() throws java.io.IOException {
