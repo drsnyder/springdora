@@ -12,7 +12,7 @@ import static org.springframework.test.util.MatcherAssertionErrors.assertThat;
 public class MercuryGatewayTest extends TestCase {
 
     public void testGet() throws Exception {
-        MercuryGateway muppet = new MercuryGateway.Builder().baseURL("http://muppet.wikia.com/").build();
+        MercuryGateway muppet = new MercuryGateway("http://muppet.wikia.com/");
         MercuryResponse response = muppet.get("Kermit the Frog");
         assertThat(response.details.isMissingNode(), is(false));
     }

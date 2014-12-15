@@ -1,7 +1,8 @@
 package com.wikia.gateway.Mercury;
 
-/**
- * Created by damonsnyder on 12/15/14.
- */
-public class MercuryAPIRequestException {
+public class MercuryAPIRequestException extends java.io.IOException {
+
+    public MercuryAPIRequestException(String message) {
+        super(message);
+    }
 }

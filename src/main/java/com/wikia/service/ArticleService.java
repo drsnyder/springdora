@@ -39,9 +39,7 @@ public class ArticleService {
 
     public MercuryGateway getMercuryGatway() {
         if (this.mercury == null) {
-            this.mercury = new MercuryGateway.Builder()
-                    .baseURL(Config.getInstance().mercuryBaseURL)
-                    .build();
+            this.mercury = new MercuryGateway(Config.getInstance().mercuryBaseURL);
         }
 
         return this.mercury;

@@ -28,7 +28,7 @@ public class ArticleController  {
         ArticleResource article = this.getArticleService().getArticle(title);
         article.add(linkTo(methodOn(ArticleController.class).get(title)).withSelfRel());
 
-        return new ResponseEntity<ArticleResource>(article, HttpStatus.OK);
+        return new ResponseEntity<>(article, HttpStatus.OK);
     }
 
     public ArticleController setArticleService(ArticleService articleService) {
