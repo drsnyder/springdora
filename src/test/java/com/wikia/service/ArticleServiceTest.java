@@ -1,26 +1,20 @@
 package com.wikia.service;
 
-import com.google.common.io.Files;
 import com.wikia.api.resource.ArticleResource;
 import com.wikia.gateway.Mercury.MercuryAPIRequestException;
 import com.wikia.gateway.MercuryGateway;
 import junit.framework.TestCase;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
 
 import java.io.InputStream;
-import java.nio.charset.Charset;
 
 @ContextConfiguration
 public class ArticleServiceTest extends TestCase {

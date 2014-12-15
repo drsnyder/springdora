@@ -5,9 +5,11 @@ import com.wikia.Config;
 import com.wikia.api.resource.ArticleResource;
 import com.wikia.gateway.Mercury.MercuryResponse;
 import com.wikia.gateway.MercuryGateway;
+import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
+@Service
 public class ArticleService {
 
     private MercuryGateway mercury;
