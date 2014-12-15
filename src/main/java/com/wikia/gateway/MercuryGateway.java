@@ -2,6 +2,8 @@ package com.wikia.gateway;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.wikia.gateway.Mercury.MercuryResponse;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -16,20 +18,20 @@ public class MercuryGateway {
         siteUrl = builder.siteUrl;
     }
 
-    public JsonNode get(String title) throws java.io.IOException {
-        // http://muppet.wikia.com/api/v1/MercuryGateway/Article?title=Kermit%20the%20Frog
+    public MercuryResponse get(String title) throws java.io.IOException {
+        // http://muppet.wikia.com/api/v1/Mercury/Article?title=Kermit%20the%20Frog
         String query = String.format("title=%s", URLEncoder.encode(title, "UTF-8"));
-        URLConnection connection = new URL(this.siteUrl + "api/v1/MercuryGateway/Article?" + query).openConnection();
+        URLConnection connection = new URL(this.siteUrl + "api/v1/Mercury/Article?" + query).openConnection();
         InputStream response = connection.getInputStream();
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode json = objectMapper.readTree(response);
+        ObjectReader reader = objectMapper.reader(MercuryResponse.class);
 
-        return json;
+        return reader.readValue(json.path("data"));
     }
 
     public static final class Builder {
         private String siteUrl;
-        private String title;
 
         public Builder() {
         }
