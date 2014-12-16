@@ -31,6 +31,17 @@ public class ArticleController  {
         return new ResponseEntity<>(article, HttpStatus.OK);
     }
 
+
+    @RequestMapping(value = "/default", method = RequestMethod.GET)
+    @ResponseBody
+    public HttpEntity<ArticleResource> getDefault() throws java.io.IOException {
+        requests.mark();
+        ArticleResource article = this.getArticleService().getDefaultArticle();
+        article.add(linkTo(methodOn(ArticleController.class).getDefault()).withSelfRel());
+
+        return new ResponseEntity<>(article, HttpStatus.OK);
+    }
+
     public ArticleController setArticleService(ArticleService articleService) {
         this.articleService = articleService;
         return this;

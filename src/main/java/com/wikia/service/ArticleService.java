@@ -34,6 +34,17 @@ public class ArticleService {
         );
     }
 
+    public ArticleResource getDefaultArticle() throws java.io.IOException {
+        MercuryResponse response = this.getMercuryGatway().getDefaultMercuryAPIResponse();
+
+        return new ArticleResource(
+                response.article.path("content").asText(),
+                response.details.path("id").asInt(),
+                response.details.path("title").asText(),
+                response.details.path("thumbnail").asText()
+        );
+    }
+
     public ArticleService setMercuryGateway(MercuryGateway mercury) {
         this.mercury = mercury;
         return this;

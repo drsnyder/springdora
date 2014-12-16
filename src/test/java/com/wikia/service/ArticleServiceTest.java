@@ -56,12 +56,14 @@ public class ArticleServiceTest extends TestCase {
         MercuryGateway mercuryGateway = mock(MercuryGateway.class);
         when(mercuryGateway.getMercuryAPIResponse(title)).thenReturn(this.kermitInputStream);
         when(mercuryGateway.get(title)).thenCallRealMethod();
+        when(mercuryGateway.inputStreamToMercuryResponse(this.kermitInputStream)).thenCallRealMethod();
         return mercuryGateway;
     }
 
     public MercuryGateway getBogusMercuryGatewayGetMercuryAPIResponseMock(String title) throws java.io.IOException {
         MercuryGateway mercuryGateway = mock(MercuryGateway.class);
         when(mercuryGateway.getMercuryAPIResponse(title)).thenReturn(this.bogusInputStream);
+        when(mercuryGateway.inputStreamToMercuryResponse(this.bogusInputStream)).thenCallRealMethod();
         when(mercuryGateway.get(title)).thenCallRealMethod();
         return mercuryGateway;
     }
